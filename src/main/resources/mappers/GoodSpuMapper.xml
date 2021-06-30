@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.injahow.goodsManager.dao.GoodSpuDAO" >
+
+    <!-- 左边向右转换建立映射，相同可省略-->
+    <!--<resultMap id="GoodMap" type="Good">
+        <id column="id" property="id" />
+        <result column="goodName" property="goodName" />
+        <result column="goodAuthor" property="goodAuthor"/>
+        <result column="goodPrice" property="goodPrice" />
+    </resultMap>-->
+
+    <insert id="insertGoodSpu" useGeneratedKeys="true" keyProperty="id">
+        insert into good_spu(goodId,goodName,typeId,soldNum,status,context,createTime,updateTime)
+        value (#{goodId},#{goodName},#{typeId} #{soldNum},#{status},${context},#{createTime},#{updateTime} )
+    </insert>
+
+    <delete id="deleteGoodSpu">
+        delete from good_spu where goodId=#{goodId}
+    </delete>
+
+    <!-- goodId,goodName,goodAuthor,goodPrice,goodImg,goodSec,goodTypeId,createTime -->
+    <select id="listGoodSpu" resultType="GoodSpu">
+        select goodId,goodName,typeId,soldNum,status,context,createTime,updateTime
+        from good_spu
+        limit #{start}, #{pageSize}
+    </select>
+
+    <select id="queryGoodSpuById" resultType="GoodSpu">
+        select goodId,goodName,typeId,soldNum,status,context,createTime,updateTime
+        from good_spu
+        where goodId=#{goodId}
+    </select>
+
+
+</mapper>

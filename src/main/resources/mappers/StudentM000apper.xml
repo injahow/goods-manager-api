@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.injahow.dao.booksManager.StudentDAO" >
+    <!-- 左边为数据库表项，右边为java类属性名，建立映射，相同可省略-->
+    <!-- 注意使用了mybatis配置文件中的别名Student -->
+    <resultMap id="StudentMap" type="Student">
+        <id column="id" property="id" />
+        <result column="sNo" property="stuNo"/>
+        <result column="sName" property="stuName" />
+        <result column="sAge" property="stuAge" />
+    </resultMap>
+
+    <select id="getAllStudentByPage" resultMap="StudentMap">
+        select id, sNo, sName, sAge
+        from student
+        limit #{start}, #{pageSize}
+    </select>
+
+    <insert id="insertStudent" useGeneratedKeys="true" keyProperty="id">
+        insert into student(id, sNo, sName, sAge)
+        value (#{id}, #{stuNo}, #{stuName}, #{stuAge})
+    </insert>
+
+    <delete id="deleteStudent">
+        delete from student where sNo=#{sNo}
+    </delete>
+
+    <select id="searchStudentByPage" resultMap="StudentMap">
+        select id, sNo, sName, sAge
+        from student
+        where 1=1
+        <if test="sNo!=0">
+            and sNo like '%'#{sNo}'%'
+        </if>
+        <if test="sName!=null">
+            and sName like '%'#{sName}'%'
+        </if>
+        <if test="sAge!=0">
+            and sAge like '%'#{sAge}'%'
+        </if>
+    </select>
+
+    <select id="countStudent" resultType="int">
+        select count(1) from student;
+    </select>
+
+</mapper>
