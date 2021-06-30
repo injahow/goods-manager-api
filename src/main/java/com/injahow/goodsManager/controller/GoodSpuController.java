@@ -1,6 +1,9 @@
 package com.injahow.goodsManager.controller;
 
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.injahow.goodsManager.bean.GoodSpu;
 import com.injahow.goodsManager.bean.vo.ResultVO;
 import com.injahow.goodsManager.service.GoodSpuService;
@@ -19,19 +22,18 @@ import java.util.List;
 public class GoodSpuController {
 
     @Resource
-    private GoodSpuService goodService;
+    private GoodSpuService goodSpuService;
 
     @GetMapping("/list")
     @ResponseBody
-    public ResultVO list() {
+    public ResultVO list(@RequestParam(defaultValue = "1") int pageNo,
+                         @RequestParam(defaultValue = "10") int pageSize) {
 
-        List<GoodSpu> goods = goodService.listGoodSpu(1,5);
+        PageHelper.startPage(pageNo, pageSize);
 
-        PageHelperVO pageHelperVO = new PageHelperVO(80,12, goods);
-        System.out.println("list...");
+        PageInfo<GoodSpu> pageInfo = new PageInfo<>(goodSpuService.listGoodSpu());
 
-
-        return new ResultVO(200, "success" , pageHelperVO);
+        return new ResultVO(200, "success" , pageInfo);
     }
 
     @PostMapping("/add") // 同步响应，直接跳转

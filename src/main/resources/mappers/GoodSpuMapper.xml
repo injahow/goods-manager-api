@@ -13,6 +13,7 @@
         <result column="goodPrice" property="goodPrice" />
     </resultMap>-->
 
+
     <insert id="insertGoodSpu" useGeneratedKeys="true" keyProperty="id">
         insert into good_spu(goodId,goodName,typeId,soldNum,status,context,createTime,updateTime)
         value (#{goodId},#{goodName},#{typeId} #{soldNum},#{status},${context},#{createTime},#{updateTime} )
@@ -26,7 +27,6 @@
     <select id="listGoodSpu" resultType="GoodSpu">
         select goodId,goodName,typeId,soldNum,status,context,createTime,updateTime
         from good_spu
-        limit #{start}, #{pageSize}
     </select>
 
     <select id="queryGoodSpuById" resultType="GoodSpu">

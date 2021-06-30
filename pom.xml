@@ -17,6 +17,12 @@
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
+		<!-- pagehelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.5</version>
+		</dependency>
 		<!-- JWT工具 -->
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
