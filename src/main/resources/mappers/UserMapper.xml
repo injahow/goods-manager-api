@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.injahow.booksManager.dao.UserDAO" >
+
+    <!-- 左边为数据库表项，右边为java类属性名，建立映射，相同可省略-->
+    <!-- 注意springboot配置文件启用了别名 -->
+<!--    <resultMap id="UserMap" type="User">
+        <id column="userId" property="userId" />
+        <result column="userName" property="userName"/>
+    </resultMap>-->
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into user(userId,userName)
+        value (#{userId}, #{userName})
+    </insert>
+
+    <select id="queryUserById" resultType="User">
+        select userId,userName,userAvatar,introduction,userTel,userAddress,userRank,userCreateTime
+        from user
+        where userId=#{userId}
+    </select>
+
+
+</mapper>

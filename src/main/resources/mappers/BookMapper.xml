@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.injahow.booksManager.dao.BookDAO" >
+
+    <!-- 左边向右转换建立映射，相同可省略-->
+    <!--<resultMap id="BookMap" type="Book">
+        <id column="id" property="id" />
+        <result column="bookName" property="bookName" />
+        <result column="bookAuthor" property="bookAuthor"/>
+        <result column="bookPrice" property="bookPrice" />
+    </resultMap>-->
+
+    <insert id="insertBook" useGeneratedKeys="true" keyProperty="id">
+        insert into book(id, bookName, bookAuthor, bookPrice)
+        value (#{id}, #{bookName}, #{bookAuthor}, #{bookPrice})
+    </insert>
+
+    <delete id="deleteBook">
+        delete from book where id=#{id}
+    </delete>
+
+    <select id="listBook" resultType="Book">
+        select bookId,bookName,bookAuthor,bookPrice,bookImg,bookSummary,bookTypeId,bookISBN,createTime
+        from book
+        limit #{start}, #{pageSize}
+    </select>
+
+    <select id="queryBookById" resultType="Book">
+        select bookId,bookName,bookAuthor,bookPrice,bookImg,bookSummary,bookTypeId,bookISBN,createTime
+        from book
+        where id=#{id}
+    </select>
+
+
+</mapper>
