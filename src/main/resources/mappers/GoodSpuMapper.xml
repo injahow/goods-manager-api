@@ -18,7 +18,7 @@
         values (#{goodId},#{goodName},#{typeId},#{soldNum},#{status},#{context},#{createTime},#{updateTime})
     </insert>
 
-    <delete id="deleteGoodSpu">
+    <delete id="deleteGoodSpuById" parameterType="com.injahow.goodsManager.bean.GoodSpu">
         delete from good_spu where goodId=#{goodId}
     </delete>
 
