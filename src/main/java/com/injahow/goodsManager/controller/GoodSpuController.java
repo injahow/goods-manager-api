@@ -5,14 +5,18 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.injahow.goodsManager.bean.GoodSpu;
+import com.injahow.goodsManager.bean.GoodType;
+import com.injahow.goodsManager.bean.vo.GoodSpuAndTypeVO;
 import com.injahow.goodsManager.bean.vo.ResultVO;
 import com.injahow.goodsManager.service.GoodSpuService;
 import com.injahow.goodsManager.bean.vo.PageHelperVO;
+import com.injahow.goodsManager.service.GoodTypeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -24,6 +28,9 @@ public class GoodSpuController {
     @Resource
     private GoodSpuService goodSpuService;
 
+    @Resource
+    private GoodTypeService goodTypeService;
+
     @GetMapping("/list")
     @ResponseBody
     public ResultVO list(@RequestParam(defaultValue = "1") int pageNo,
@@ -33,7 +40,32 @@ public class GoodSpuController {
 
         PageInfo<GoodSpu> pageInfo = new PageInfo<>(goodSpuService.listGoodSpu());
 
-        return new ResultVO(200, "success", pageInfo);
+        int pages = pageInfo.getPages();
+        int total = (int) pageInfo.getTotal();
+
+        List<GoodSpu> list = pageInfo.getList();
+
+
+        List<GoodSpuAndTypeVO> resList = new ArrayList();
+
+        for(GoodSpu item: list){
+            GoodType goodType = goodTypeService.getGoodTypeById(item.getTypeId());
+
+            resList.add(new GoodSpuAndTypeVO(
+                    item.getGoodId(),
+                    item.getGoodName(),
+                    goodType,
+                    item.getSoldNum(),
+                    item.getStatus(),
+                    item.getContext(),
+                    item.getCreateTime(),
+                    item.getUpdateTime()
+            ));
+        }
+
+
+        PageHelperVO<GoodSpuAndTypeVO> data = new PageHelperVO<>(total, pages, resList);
+        return new ResultVO(200, "success" , data);
     }
 
     @PostMapping("/add")
@@ -55,6 +87,7 @@ public class GoodSpuController {
         System.out.println(goodSpu);
         if (goodId>0){
             boolean isSuccess = goodSpuService.editGoodSpu(goodSpu);
+            System.out.println(goodSpu);
             if (isSuccess){
                 return new ResultVO(200,"修改成功",null);
             }else {
