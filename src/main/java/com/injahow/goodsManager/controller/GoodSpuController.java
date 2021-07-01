@@ -33,7 +33,7 @@ public class GoodSpuController {
 
         PageInfo<GoodSpu> pageInfo = new PageInfo<>(goodSpuService.listGoodSpu());
 
-        return new ResultVO(200, "success" , pageInfo);
+        return new ResultVO(200, "success", pageInfo);
     }
 
     @PostMapping("/add")
@@ -41,17 +41,12 @@ public class GoodSpuController {
     public ResultVO add(GoodSpu goodSpu /*MultipartFile imgFile*/) {
         // MultipartFile 获取文件流，属性名保持一致
         boolean isSuccess = goodSpuService.addGoodSpu(goodSpu);
-        if (isSuccess){
-            return new ResultVO(200, "提交成功" ,null);
-        }else {
-            return new ResultVO(500, "提交失败" ,null);
+        if (isSuccess) {
+            return new ResultVO(200, "提交成功", null);
+        } else {
+            return new ResultVO(500, "提交失败", null);
         }
-
-        //System.out.println("add...");
-        //System.out.println(imgFile.getOriginalFilename());
-        //model.addAttribute("book", book);
     }
-
 
     @PostMapping("/edit")
     @ResponseBody
@@ -70,5 +65,15 @@ public class GoodSpuController {
         }
     }
 
+    @PostMapping("/del")
+    @ResponseBody
+    public ResultVO del(@RequestParam("goodId") int goodId) {
+        boolean isSuccess = goodSpuService.removeGoodSpuById(goodId);
+        if (isSuccess) {
+            return new ResultVO(200, "删除成功", null);
+        } else {
+            return new ResultVO(500, "删除失败", null);
+        }
 
+    }
 }
