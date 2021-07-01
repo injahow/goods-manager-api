@@ -36,7 +36,7 @@ public class GoodSpuController {
         return new ResultVO(200, "success" , pageInfo);
     }
 
-    @PostMapping("/add") // 同步响应，直接跳转
+    @PostMapping("/add")
     @ResponseBody
     public ResultVO add(GoodSpu goodSpu /*MultipartFile imgFile*/) {
         // MultipartFile 获取文件流，属性名保持一致

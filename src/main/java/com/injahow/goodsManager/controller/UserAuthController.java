@@ -32,8 +32,6 @@ public class UserAuthController {
         String username = person.get("username");
         String password = person.get("password");
 
-        System.out.println(username+"-------"+password);
-
         if(password==null || username == null){
             return new ResultVO(500,"为空！",null);
         }
@@ -41,15 +39,14 @@ public class UserAuthController {
         userAuthReq.setPassword(password);
 
         User user = userAuthService.loginCheck(userAuthReq);
-        //String s = MD5Util.md5("111111");
-        //System.out.println(s);
+
         if(user!=null) {
             Map map = new HashMap();
             String token = AuthUtil.getToken(user);
             map.put("token", token);
             return new ResultVO(200,null, map);
         }else {
-            return new ResultVO(500, "???", null);
+            return new ResultVO(500, "账号或密码错误！", null);
         }
     }
 
@@ -62,14 +59,11 @@ public class UserAuthController {
         }else {
             JwtParser parser = Jwts.parser();
             parser.setSigningKey(AuthUtil.SECRET);
-
             try {
-                //System.out.println(token);
                 Jws<Claims> headerClaimsJwt = parser.parseClaimsJws(token);
                 Claims body = headerClaimsJwt.getBody();
 
                 Map userInfo = new HashMap();
-
                 userInfo.put("name", body.get("name", String.class));
                 userInfo.put("introduction", body.get("introduction", String.class));
                 userInfo.put("avatar", body.get("avatar", String.class));
