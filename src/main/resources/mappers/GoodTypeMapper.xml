@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.injahow.goodsManager.dao.GoodTypeDAO" >
+
+    <!-- 左边向右转换建立映射，相同可省略-->
+    <!--<resultMap id="GoodMap" type="Good">
+        <id column="id" property="id" />
+        <result column="goodName" property="goodName" />
+        <result column="goodAuthor" property="goodAuthor"/>
+        <result column="goodPrice" property="goodPrice" />
+    </resultMap>-->
+
+    <select id="findGoodTypeById" resultType="GoodType">
+        select typeId,typeName,typeDesc
+        from good_type
+        where typeId=#{typeId}
+    </select>
+
+</mapper>

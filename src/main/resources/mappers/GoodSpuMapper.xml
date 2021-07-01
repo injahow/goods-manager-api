@@ -53,4 +53,7 @@
         where goodId=#{goodId}
     </select>
 
+
+
+
 </mapper>
