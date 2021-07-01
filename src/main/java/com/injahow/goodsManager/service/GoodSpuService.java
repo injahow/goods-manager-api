@@ -11,8 +11,7 @@ public interface GoodSpuService {
 
     boolean addGoodSpu(GoodSpu goodSpu);
     Page<GoodSpu> listGoodSpu();
-
-    boolean removeGoodSpu();
     boolean editGoodSpu(GoodSpu goodSpu);
+    boolean removeGoodSpuById(int goodId);
 
 }

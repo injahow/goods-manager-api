@@ -28,8 +28,9 @@ public class GoodSpuServiceImpl implements GoodSpuService {
     }
 
     @Override
-    public boolean removeGoodSpu() {
-        return false;
+    public boolean removeGoodSpuById(int goodId) {
+        int res = goodSpuDAO.deleteGoodSpuById(goodId);
+        return res>0;
     }
 
     @Override
