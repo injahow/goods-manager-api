@@ -19,4 +19,14 @@
         where typeId=#{typeId}
     </select>
 
+    <select id="listGoodType" resultType="GoodType">
+        select typeId,typeName,typeDesc
+        from good_type
+    </select>
+
+    <select id="listIdAndNameGoodType" resultType="GoodType">
+        select typeId,typeName
+        from good_type
+    </select>
+
 </mapper>

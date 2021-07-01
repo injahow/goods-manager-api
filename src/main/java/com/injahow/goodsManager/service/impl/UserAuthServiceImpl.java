@@ -24,17 +24,13 @@ public class UserAuthServiceImpl implements UserAuthService {
     public User loginCheck(UserAuth userAuthReq) {
         UserAuth userAuth;
         if(userAuthReq.getAccount()!=null){
-            System.out.println("userAuthReq...................");
-
             userAuth = userAuthDAO.queryUserAuthByAccount(userAuthReq.getAccount());
             if(userAuth!=null){
                 if(userAuth.getPassword().equals(MD5Util.md5(userAuthReq.getPassword()))){
-                    System.out.println(userAuth.getUserId());
                     return userDAO.queryUserById(userAuth.getUserId());
                 }
             }
         }
-
         return null;
     }
 

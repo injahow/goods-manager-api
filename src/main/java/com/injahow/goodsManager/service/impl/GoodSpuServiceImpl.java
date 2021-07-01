@@ -21,6 +21,7 @@ public class GoodSpuServiceImpl implements GoodSpuService {
     @Transactional
     public boolean addGoodSpu(GoodSpu goodSpu) {
         goodSpu.setCreateTime(new Date());
+        goodSpu.setUpdateTime(new Date());
         int res = goodSpuDAO.insertGoodSpu(goodSpu);
         return res>0;
     }
@@ -37,13 +38,15 @@ public class GoodSpuServiceImpl implements GoodSpuService {
     }
 
     @Override
+    public GoodSpu find(int goodId) {
+        return goodSpuDAO.queryGoodSpuById(goodId);
+    }
+
+    @Override
     public boolean editGoodSpu(GoodSpu goodSpu) {
         goodSpu.setUpdateTime(new Date());
         int res = goodSpuDAO.updateGoodSpu(goodSpu);
         return res>0;
     }
 
-    public boolean queryGoodSkuById(GoodSpu goodSpu, GoodSku goodSku){
-        goodSku.
-    }
 }

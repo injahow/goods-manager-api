@@ -19,13 +19,13 @@ import java.util.Map;
 @Controller
 @RequestMapping("/user")
 @CrossOrigin
+@ResponseBody
 public class UserAuthController {
 
     @Resource
     private UserAuthService userAuthService;
 
     @PostMapping("/login")
-    @ResponseBody
     public ResultVO login(@RequestBody Map<String, String> person) {
 
         UserAuth userAuthReq = new UserAuth();
@@ -51,7 +51,6 @@ public class UserAuthController {
     }
 
     @GetMapping("/info")
-    @ResponseBody
     public ResultVO info(@Param("token") String token) {
 
         if(token == null){
@@ -76,7 +75,6 @@ public class UserAuthController {
     }
 
     @PostMapping("/logout")
-    @ResponseBody
     public ResultVO logout() {
         return new ResultVO(200, null, "success");
     }

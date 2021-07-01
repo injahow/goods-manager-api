@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class GoodTypeServiceImpl implements GoodTypeService {
@@ -14,11 +15,16 @@ public class GoodTypeServiceImpl implements GoodTypeService {
     @Resource
     private GoodTypeDAO goodTypeDAO;
 
-
     @Override
     @Transactional
     public GoodType getGoodTypeById(int typeId) {
         return goodTypeDAO.findGoodTypeById(typeId);
 
     }
+
+    @Override
+    public List<GoodType> listIdAndNameGoodType() {
+        return goodTypeDAO.listIdAndNameGoodType();
+    }
+
 }
