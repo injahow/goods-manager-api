@@ -35,5 +35,21 @@
         where goodId=#{goodId}
     </select>
 
+    <update id="updateGoodSpu">
+        update good_spu
+        set
+            goodName=#{goodName},
+            typeId=#{typeId},
+            soldNum=#{soldNum},
+            status=#{status},
+            context=#{context},
+            createTime=#{createTime},
+            updateTime=#{updateTime}
+        where
+            goodId=#{goodId}
+
+    </update>
+
+
 
 </mapper>

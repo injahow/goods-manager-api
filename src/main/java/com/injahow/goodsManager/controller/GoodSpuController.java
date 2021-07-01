@@ -52,4 +52,23 @@ public class GoodSpuController {
         //model.addAttribute("book", book);
     }
 
+
+    @PostMapping("/edit")
+    @ResponseBody
+    public ResultVO edit(GoodSpu goodSpu){
+        int goodId = goodSpu.getGoodId();
+        System.out.println(goodSpu);
+        if (goodId>0){
+            boolean isSuccess = goodSpuService.editGoodSpu(goodSpu);
+            if (isSuccess){
+                return new ResultVO(200,"修改成功",null);
+            }else {
+                return new ResultVO(500,"修改失败",null);
+            }
+        }else {
+            return new ResultVO(500,"提交表单失败",null);
+        }
+    }
+
+
 }

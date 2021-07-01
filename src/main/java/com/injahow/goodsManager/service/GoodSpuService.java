@@ -13,5 +13,6 @@ public interface GoodSpuService {
     Page<GoodSpu> listGoodSpu();
 
     boolean removeGoodSpu();
+    boolean editGoodSpu(GoodSpu goodSpu);
 
 }
