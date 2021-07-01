@@ -38,13 +38,18 @@ public class GoodSpuController {
 
     @PostMapping("/add") // 同步响应，直接跳转
     @ResponseBody
-    public HashMap add(/*Good good,*/ MultipartFile imgFile) {
+    public ResultVO add(GoodSpu goodSpu /*MultipartFile imgFile*/) {
         // MultipartFile 获取文件流，属性名保持一致
-        //bookService.addBook(book);
+        boolean isSuccess = goodSpuService.addGoodSpu(goodSpu);
+        if (isSuccess){
+            return new ResultVO(200, "提交成功" ,null);
+        }else {
+            return new ResultVO(500, "提交失败" ,null);
+        }
+
         //System.out.println("add...");
         //System.out.println(imgFile.getOriginalFilename());
         //model.addAttribute("book", book);
-        return null;
     }
 
 }
