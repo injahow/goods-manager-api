@@ -1,2 +1,2 @@
-# books-manager-api
-xx管理系统后台
+# goods-manager-api
+goods管理系统后台
