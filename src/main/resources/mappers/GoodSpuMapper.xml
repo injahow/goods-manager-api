@@ -47,11 +47,6 @@
             goodId=#{goodId}
     </update>
 
-    <select id="queryGoodSkuById" resultType="GoodSku">
-        select skuId,skuName,skuImg,paramsMap,originalPrice,sellPrice,goodStock,createTime,updateTime
-        from good_sku
-        where goodId=#{goodId}
-    </select>
 
 
 
