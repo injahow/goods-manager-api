@@ -61,18 +61,7 @@ public class GoodSpuController {
     @GetMapping("/find")
     public ResultVO find(@RequestParam("goodId") int goodId) {
         GoodSpu goodSpu = goodSpuService.find(goodId);
-        GoodType goodType = goodTypeService.getGoodTypeById(goodSpu.getTypeId());
-        GoodSpuAndTypeVO goodSpuAndTypeVO = new GoodSpuAndTypeVO(
-                goodSpu.getGoodId(),
-                goodSpu.getGoodName(),
-                goodType,
-                goodSpu.getSoldNum(),
-                goodSpu.getStatus(),
-                goodSpu.getContext(),
-                goodSpu.getCreateTime(),
-                goodSpu.getUpdateTime()
-        );
-        return new ResultVO(200, "success" , goodSpuAndTypeVO);
+        return new ResultVO(200, "success" , goodSpu);
     }
 
     @PostMapping("/add")
@@ -81,8 +70,8 @@ public class GoodSpuController {
         if(goodSpu.getContext()==null &&
                 goodSpu.getGoodName()==null &&
                 goodSpu.getSoldNum() == 0 &&
-                goodSpu.getStatus()==0 &&
-                goodSpu.getTypeId()==0 ) {
+                goodSpu.getStatus() == 0 &&
+                goodSpu.getTypeId() == 0 ) {
             return new ResultVO(500, "请输入数据后提交", null);
         }
         boolean isSuccess = goodSpuService.addGoodSpu(goodSpu);
