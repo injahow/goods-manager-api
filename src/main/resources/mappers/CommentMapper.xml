@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE mapper
+        PUBLIC "-/ /mybatis .org//DTD Mapper 3. 0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.injahow.goodsManager.dao.CommentDAO">
+        <select id="listCommentAndUser" resultType="Comment">
+            select memberId,memberName,memberAvatar
+            from member
+            where memberId=#{memberId}
+        </select>
+
+        <select id="listComment" resultType="Comment">
+            select commentId,goodId,content,memberId,createTime
+            from comment
+        </select>
+
+    <delete id="deleteCommentById" parameterType="com.injahow.goodsManager.bean.Comment">
+        delete from comment where commentId=#{commentId}
+    </delete>
+</mapper>

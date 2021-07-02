@@ -12,7 +12,7 @@ import java.util.Date;
 @Setter
 public class Comment {
     int commentId;
-    String productId;
+    String goodId;
     String content;
     int memberId;
     Date createTime;
