@@ -13,15 +13,28 @@
         <result column="goodPrice" property="goodPrice" />
     </resultMap>-->
 
+    <insert id="insertGoodType" useGeneratedKeys="true" keyProperty="typeId">
+        insert into good_type(typeId,typeName,typeDesc)
+        values (#{typeId},#{typeName},#{typeDesc})
+    </insert>
+
+    <delete id="deleteGoodTypeById" parameterType="com.injahow.goodsManager.bean.GoodType">
+        delete from good_type where typeId=#{typeId}
+    </delete>
+
+    <update id="updateGoodType">
+        update good_type
+        set
+            typeName=#{typeName},
+            typeDesc=#{typeDesc}
+        where
+            typeId=#{typeId}
+    </update>
+
     <select id="findGoodTypeById" resultType="GoodType">
         select typeId,typeName,typeDesc
         from good_type
         where typeId=#{typeId}
-    </select>
-
-    <select id="listGoodType" resultType="GoodType">
-        select typeId,typeName,typeDesc
-        from good_type
     </select>
 
     <select id="listIdAndNameGoodType" resultType="GoodType">
@@ -29,4 +42,8 @@
         from good_type
     </select>
 
+    <select id="listGoodType" resultType="GoodType">
+        select typeId,typeName,typeDesc
+        from good_type
+    </select>
 </mapper>
