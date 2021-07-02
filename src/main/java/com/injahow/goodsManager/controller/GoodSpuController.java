@@ -41,7 +41,7 @@ public class GoodSpuController {
         List<GoodSpuAndTypeVO> resList = new ArrayList();
 
         for(GoodSpu item: list){
-            GoodType goodType = goodTypeService.getGoodTypeById(item.getTypeId());
+            GoodType goodType = goodTypeService.listGoodTypeById(item.getTypeId());
             resList.add(new GoodSpuAndTypeVO(
                     item.getGoodId(),
                     item.getGoodName(),
@@ -88,7 +88,6 @@ public class GoodSpuController {
         System.out.println(goodSpu);
         if (goodId>0){
             boolean isSuccess = goodSpuService.editGoodSpu(goodSpu);
-            System.out.println(goodSpu);
             if (isSuccess){
                 return new ResultVO(200,"修改成功",null);
             }else {

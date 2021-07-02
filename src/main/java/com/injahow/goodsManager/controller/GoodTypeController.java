@@ -1,5 +1,6 @@
 package com.injahow.goodsManager.controller;
 
+import com.injahow.goodsManager.bean.GoodSpu;
 import com.injahow.goodsManager.bean.GoodType;
 import com.injahow.goodsManager.bean.vo.ResultVO;
 import com.injahow.goodsManager.service.GoodTypeService;
@@ -22,6 +23,44 @@ public class GoodTypeController {
     @Resource
     private GoodTypeService goodTypeService;
 
+    @PostMapping("/add")
+    public ResultVO add(@RequestBody GoodType goodType) {
+        if(goodType.getTypeId()== 0 &&
+                goodType.getTypeName()==null) {
+            return new ResultVO(500, "请输入数据后提交", null);
+        }
+        boolean isSuccess = goodTypeService.addGoodType(goodType);
+        if (isSuccess) {
+            return new ResultVO(200, "提交成功", null);
+        } else {
+            return new ResultVO(500, "提交失败", null);
+        }
+    }
+
+    @PostMapping("/del")
+    public ResultVO del(@RequestBody GoodType goodType) {
+        boolean isSuccess = goodTypeService.removeGoodTypeById(goodType.getTypeId());
+        if (isSuccess) {
+            return new ResultVO(200, "删除成功", null);
+        } else {
+            return new ResultVO(500, "删除失败", null);
+        }
+    }
+
+    @PostMapping("/edit")
+    public ResultVO edit(@RequestBody GoodType goodType){
+        int typeId = goodType.getTypeId();
+        if (typeId>0){
+            boolean isSuccess = goodTypeService.editGoodType(goodType);
+            if (isSuccess){
+                return new ResultVO(200,"修改成功",null);
+            }else {
+                return new ResultVO(500,"修改失败",null);
+            }
+        }else {
+            return new ResultVO(500,"提交表单失败",null);
+        }
+    }
 
     @GetMapping("/list_name")
     public ResultVO listName(){
@@ -33,17 +72,20 @@ public class GoodTypeController {
             map.put("typeName",goodType.getTypeName());
             mapList.add(map);
         }
-        return new ResultVO(200, null, mapList);
+        return new ResultVO(200, "success", mapList);
     }
 
     @GetMapping("/list")
-    public ResultVO get(){
-
-        /*int typeId = goodType.getTypeId();
-        System.out.println(typeId);
-        if (typeId>0){
-            return new ResultVO();
-        }*/
-        return new ResultVO(200,null, null);
+    public ResultVO list(){
+        List<Map> mapList = new ArrayList<>();
+        List<GoodType>  goodTypeList = goodTypeService.listGoodType();
+        for (GoodType goodType: goodTypeList){
+            Map map = new HashMap();
+            map.put("typeId",goodType.getTypeId());
+            map.put("typeName",goodType.getTypeName());
+            map.put("typeDesc",goodType.getTypeDesc());
+            mapList.add(map);
+        }
+        return new ResultVO(200,"success", goodTypeList);
     }
 }
