@@ -56,14 +56,30 @@ public class CommentController {
     @PostMapping("/del")
     public ResultVO del(@RequestBody Comment comment) {
         int commentId = comment.getCommentId();
-        if (commentId!=0){
+        if (commentId>0) {
             boolean isSuccess = commentService.removeCommentById(commentId);
             if (isSuccess) {
                 return new ResultVO(200, "删除成功", null);
             } else {
                 return new ResultVO(500, "删除失败", null);
             }
-        }else {
+        } else {
+            return new ResultVO(500, "提交请求失败", null);
+        }
+
+    }
+
+    @PostMapping("/del_all")
+    public ResultVO delAll(@RequestBody List<Integer> commentIds) {
+
+        if (commentIds.size()>0) {
+            boolean isSuccess = commentService.deleteCommentsById(commentIds);
+            if (isSuccess) {
+                return new ResultVO(200, "删除成功", null);
+            } else {
+                return new ResultVO(500, "删除失败", null);
+            }
+        } else {
             return new ResultVO(500, "提交请求失败", null);
         }
 

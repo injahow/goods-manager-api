@@ -8,6 +8,7 @@ import com.injahow.goodsManager.service.CommentService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -25,5 +26,11 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public Page<Comment> listComment() {
         return commentDAO.listComment();
+    }
+
+    @Override
+    public boolean deleteCommentsById(List<Integer> idList) {
+        int res = commentDAO.deleteCommentsById(idList);
+        return res>0;
     }
 }

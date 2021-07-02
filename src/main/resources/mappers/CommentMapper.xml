@@ -15,7 +15,15 @@
             from comment
         </select>
 
-    <delete id="deleteCommentById" parameterType="com.injahow.goodsManager.bean.Comment">
+    <delete id="deleteCommentById">
         delete from comment where commentId=#{commentId}
     </delete>
+
+    <delete id="deleteCommentsById" parameterType="java.util.List">
+        delete from comment where commentId in
+        <foreach collection="list" index="index" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
 </mapper>

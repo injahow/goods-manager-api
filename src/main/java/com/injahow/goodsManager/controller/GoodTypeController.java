@@ -1,6 +1,5 @@
 package com.injahow.goodsManager.controller;
 
-import com.injahow.goodsManager.bean.GoodSpu;
 import com.injahow.goodsManager.bean.GoodType;
 import com.injahow.goodsManager.bean.vo.ResultVO;
 import com.injahow.goodsManager.service.GoodTypeService;
@@ -39,12 +38,19 @@ public class GoodTypeController {
 
     @PostMapping("/del")
     public ResultVO del(@RequestBody GoodType goodType) {
-        boolean isSuccess = goodTypeService.removeGoodTypeById(goodType.getTypeId());
-        if (isSuccess) {
-            return new ResultVO(200, "删除成功", null);
-        } else {
-            return new ResultVO(500, "删除失败", null);
+        int typeId = goodType.getTypeId();
+        if(typeId>0){
+            boolean isSuccess = goodTypeService.removeGoodTypeById(typeId);
+            if (isSuccess) {
+                return new ResultVO(200, "删除成功", null);
+            } else {
+                return new ResultVO(500, "删除失败", null);
+            }
+        }else{
+            return new ResultVO(500, "请提交typeId参数", null);
         }
+
+
     }
 
     @PostMapping("/edit")
