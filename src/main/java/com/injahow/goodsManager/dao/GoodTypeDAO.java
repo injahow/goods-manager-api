@@ -10,6 +10,6 @@ public interface GoodTypeDAO {
     int deleteGoodTypeById(int id);
     int updateGoodType(GoodType goodType);
     GoodType findGoodTypeById(int typeId);
-    Page<GoodType> listGoodType();
+    List<GoodType> listGoodType();
     List<GoodType> listIdAndNameGoodType();
 }
