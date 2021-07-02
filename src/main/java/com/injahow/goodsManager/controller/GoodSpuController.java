@@ -29,17 +29,11 @@ public class GoodSpuController {
     @Resource
     private GoodTypeService goodTypeService;
 
-    @GetMapping("/list")
-    public ResultVO list(@RequestParam(defaultValue = "1") int pageNo,
-                         @RequestParam(defaultValue = "10") int pageSize) {
-        // 配置分页插件
-        PageHelper.startPage(pageNo, pageSize);
-        PageInfo<GoodSpu> pageInfo = new PageInfo<>(goodSpuService.listGoodSpu());
+    private PageHelperVO<GoodSpuAndTypeVO> listPageInfo(PageInfo<GoodSpu> pageInfo){
         int pages = pageInfo.getPages();
         int total = (int) pageInfo.getTotal();
         List<GoodSpu> list = pageInfo.getList();
         List<GoodSpuAndTypeVO> resList = new ArrayList();
-
         for(GoodSpu item: list){
             GoodType goodType = goodTypeService.listGoodTypeById(item.getTypeId());
             resList.add(new GoodSpuAndTypeVO(
@@ -53,9 +47,30 @@ public class GoodSpuController {
                     item.getUpdateTime()
             ));
         }
+        return new PageHelperVO<>(total, pages, resList);
+    }
 
-        PageHelperVO<GoodSpuAndTypeVO> data = new PageHelperVO<>(total, pages, resList);
-        return new ResultVO(200, "success" , data);
+    @GetMapping("/list")
+    public ResultVO list(@RequestParam(defaultValue = "1") int pageNo,
+                         @RequestParam(defaultValue = "10") int pageSize) {
+        // 配置分页插件
+        PageHelper.startPage(pageNo, pageSize);
+        PageInfo<GoodSpu> pageInfo = new PageInfo<>(goodSpuService.listGoodSpu());
+        return new ResultVO(200, "success" , listPageInfo(pageInfo));
+    }
+
+    @GetMapping("/search")
+    public ResultVO search(@RequestParam String name,
+                        @RequestParam(defaultValue = "1") int pageNo,
+                        @RequestParam(defaultValue = "10") int pageSize) {
+
+        if(name==null || name==""){
+            return new ResultVO(500, "搜索名称为空！" , null);
+        }
+        PageHelper.startPage(pageNo, pageSize);
+        PageInfo<GoodSpu> pageInfo = new PageInfo<>(goodSpuService.searchGoodSpuByName(name));
+
+        return new ResultVO(200, "success" , listPageInfo(pageInfo));
     }
 
     @GetMapping("/find")

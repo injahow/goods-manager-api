@@ -11,9 +11,9 @@ public interface UserDAO {
     User findBy(Long id);
     int deleteBy(Long id);
     int deleteById(Long id);
-    int insertSelective(User record);
+    int insertSelective(User user);
     List<User> listAll();
     User findById(Long id);
-    int updateSelectiveBy(User record);
+    int updateSelectiveBy(User user);
     int updateBy(User record);
 }

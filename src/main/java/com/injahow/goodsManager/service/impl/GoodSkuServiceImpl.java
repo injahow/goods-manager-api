@@ -17,7 +17,6 @@ public class GoodSkuServiceImpl implements GoodSkuService {
     @Resource
     private GoodSkuDAO goodSkuDAO;
 
-
     @Override
     public List<GoodSku> listGoodSku(int goodId) {
         return goodSkuDAO.queryGoodSkuByGoodId(goodId);

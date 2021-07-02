@@ -88,4 +88,12 @@ public class GoodTypeController {
         }
         return new ResultVO(200,"success", goodTypeList);
     }
+
+    @GetMapping("/find")
+    public ResultVO find(@RequestParam("typeId") int typeId) {
+
+        GoodType goodType = goodTypeService.find(typeId);
+
+        return new ResultVO(200,"success", goodType);
+    }
 }

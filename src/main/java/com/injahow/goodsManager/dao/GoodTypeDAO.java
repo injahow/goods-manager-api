@@ -1,6 +1,5 @@
 package com.injahow.goodsManager.dao;
 
-import com.github.pagehelper.Page;
 import com.injahow.goodsManager.bean.GoodType;
 
 import java.util.List;

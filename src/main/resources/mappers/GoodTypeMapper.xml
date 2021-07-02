@@ -5,20 +5,12 @@
 
 <mapper namespace="com.injahow.goodsManager.dao.GoodTypeDAO" >
 
-    <!-- 左边向右转换建立映射，相同可省略-->
-    <!--<resultMap id="GoodMap" type="Good">
-        <id column="id" property="id" />
-        <result column="goodName" property="goodName" />
-        <result column="goodAuthor" property="goodAuthor"/>
-        <result column="goodPrice" property="goodPrice" />
-    </resultMap>-->
-
     <insert id="insertGoodType" useGeneratedKeys="true" keyProperty="typeId">
         insert into good_type(typeId,typeName,typeDesc)
         values (#{typeId},#{typeName},#{typeDesc})
     </insert>
 
-    <delete id="deleteGoodTypeById" parameterType="com.injahow.goodsManager.bean.GoodType">
+    <delete id="deleteGoodTypeById">
         delete from good_type where typeId=#{typeId}
     </delete>
 
@@ -46,4 +38,5 @@
         select typeId,typeName,typeDesc
         from good_type
     </select>
+
 </mapper>

@@ -5,14 +5,6 @@
 
 <mapper namespace="com.injahow.goodsManager.dao.GoodSpuDAO" >
 
-    <!-- 左边向右转换建立映射，相同可省略-->
-    <!--<resultMap id="GoodMap" type="Good">
-        <id column="id" property="id" />
-        <result column="goodName" property="goodName" />
-        <result column="goodAuthor" property="goodAuthor"/>
-        <result column="goodPrice" property="goodPrice" />
-    </resultMap>-->
-
     <insert id="insertGoodSpu" useGeneratedKeys="true" keyProperty="goodId">
         insert into good_spu(goodId,goodName,typeId,soldNum,status,context,createTime,updateTime)
         values (#{goodId},#{goodName},#{typeId},#{soldNum},#{status},#{context},#{createTime},#{updateTime})
@@ -22,10 +14,15 @@
         delete from good_spu where goodId=#{goodId}
     </delete>
 
-    <!-- goodId,goodName,goodAuthor,goodPrice,goodImg,goodSec,goodTypeId,createTime -->
     <select id="listGoodSpu" resultType="GoodSpu">
         select goodId,goodName,typeId,soldNum,status,context,createTime,updateTime
         from good_spu
+    </select>
+
+    <select id="listGoodSpuByName" resultType="GoodSpu">
+        select goodId,goodName,typeId,soldNum,status,context,createTime,updateTime
+        from good_spu
+        where goodName like CONCAT('%',#{goodName},'%')
     </select>
 
     <select id="queryGoodSpuById" resultType="GoodSpu">

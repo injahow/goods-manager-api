@@ -32,6 +32,11 @@ public class GoodSpuServiceImpl implements GoodSpuService {
     }
 
     @Override
+    public Page<GoodSpu> searchGoodSpuByName(String name) {
+        return goodSpuDAO.listGoodSpuByName(name);
+    }
+
+    @Override
     public boolean removeGoodSpuById(int goodId) {
         int res = goodSpuDAO.deleteGoodSpuById(goodId);
         return res>0;

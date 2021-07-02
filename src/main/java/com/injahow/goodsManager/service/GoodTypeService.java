@@ -14,4 +14,5 @@ public interface GoodTypeService {
     GoodType listGoodTypeById(int typeId);
     List<GoodType> listIdAndNameGoodType();
     List<GoodType> listGoodType();
+    GoodType find(int typeId);
 }

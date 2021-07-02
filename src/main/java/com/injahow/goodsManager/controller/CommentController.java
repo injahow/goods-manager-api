@@ -1,12 +1,10 @@
 package com.injahow.goodsManager.controller;
 
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.injahow.goodsManager.bean.*;
-import com.injahow.goodsManager.bean.vo.CommentAndUserVO;
-import com.injahow.goodsManager.bean.vo.GoodSpuAndTypeVO;
+import com.injahow.goodsManager.bean.vo.CommentAndMemberVO;
 import com.injahow.goodsManager.bean.vo.PageHelperVO;
 import com.injahow.goodsManager.bean.vo.ResultVO;
 import com.injahow.goodsManager.service.CommentService;
@@ -40,20 +38,18 @@ public class CommentController {
         int pages = pageInfo.getPages();
         int total = (int) pageInfo.getTotal();
         List<Comment> list = pageInfo.getList();
-        List<CommentAndUserVO> resList = new ArrayList();
-
+        List<CommentAndMemberVO> resList = new ArrayList();
         for(Comment item: list) {
             Member member = memberService.getMemberById(item.getMemberId());
-            resList.add(new CommentAndUserVO(
+            resList.add(new CommentAndMemberVO(
                     item.getCommentId(),
                     item.getGoodId(),
                     item.getContent(),
                     member,
                     item.getCreateTime()
-
             ));
         }
-        PageHelperVO<CommentAndUserVO> data = new PageHelperVO<>(total, pages, resList);
+        PageHelperVO<CommentAndMemberVO> data = new PageHelperVO<>(total, pages, resList);
         return new ResultVO(200, "success" , data);
     }
 

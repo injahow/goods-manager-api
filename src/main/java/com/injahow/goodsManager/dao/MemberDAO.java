@@ -6,6 +6,6 @@ import com.injahow.goodsManager.bean.Member;
 import java.util.List;
 
 public interface MemberDAO {
-    Member findMemberById(int cmemberId);
+    Member findMemberById(int memberId);
     List<Member> listCommentAndUser();
 }

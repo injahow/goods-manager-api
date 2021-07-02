@@ -7,6 +7,7 @@ public interface GoodSpuService {
 
     boolean addGoodSpu(GoodSpu goodSpu);
     Page<GoodSpu> listGoodSpu();
+    Page<GoodSpu> searchGoodSpuByName(String name);
     boolean editGoodSpu(GoodSpu goodSpu);
     boolean removeGoodSpuById(int goodId);
     GoodSpu find(int goodId);

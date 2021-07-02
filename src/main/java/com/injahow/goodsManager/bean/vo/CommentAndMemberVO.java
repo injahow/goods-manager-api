@@ -11,7 +11,7 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentAndUserVO {
+public class CommentAndMemberVO {
     int commentId;
     String goodId;
     String content;

@@ -51,4 +51,9 @@ public class GoodTypeServiceImpl implements GoodTypeService {
         return goodTypeDAO.listGoodType();
     }
 
+    @Override
+    public GoodType find(int typeId) {
+        return goodTypeDAO.findGoodTypeById(typeId);
+    }
+
 }

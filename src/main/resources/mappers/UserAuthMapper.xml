@@ -5,12 +5,6 @@
 
 <mapper namespace="com.injahow.goodsManager.dao.UserAuthDAO" >
 
-    <!--<resultMap id="UserAuthMap" type="UserAuth">
-        <id column="userId" property="userId" />
-        <result column="account" property="account" />
-        <result column="password" property="password" />
-    </resultMap>-->
-
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
         insert into user_auth(id,userId,account,password)
         value (#{id}, #{userId}, #{account}, #{password})
