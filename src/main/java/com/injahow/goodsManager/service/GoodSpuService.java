@@ -1,9 +1,7 @@
 package com.injahow.goodsManager.service;
 
-
 import com.github.pagehelper.Page;
 import com.injahow.goodsManager.bean.GoodSpu;
-
 
 public interface GoodSpuService {
 
