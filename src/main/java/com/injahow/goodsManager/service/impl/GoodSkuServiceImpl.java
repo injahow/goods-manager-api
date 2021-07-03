@@ -35,4 +35,9 @@ public class GoodSkuServiceImpl implements GoodSkuService {
         int res = goodSkuDAO.deleteGoodSkuById(skuId);
         return res>0;
     }
+
+    @Override
+    public GoodSku find(int skuId) {
+        return goodSkuDAO.queryGoodSkuById(skuId);
+    }
 }

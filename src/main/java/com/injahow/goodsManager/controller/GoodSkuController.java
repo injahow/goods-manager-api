@@ -27,9 +27,8 @@ public class GoodSkuController {
 
     @GetMapping("/find")
     public ResultVO find(@RequestParam("skuId") int skuId) {
-        // GoodSku goodSku = goodSkuService.find(goodId);
-
-        return new ResultVO(200, "success" , "goodSkuAndTypeVO");
+         GoodSku goodSku = goodSkuService.find(skuId);
+        return new ResultVO(200, "success" , goodSku);
     }
 
     @PostMapping("/add")

@@ -14,10 +14,10 @@
         delete from good_sku where skuId=#{skuId}
     </delete>
 
-    <select id="queryGoodSkuByGoodId" resultType="GoodSku">
+    <select id="queryGoodSkuById" resultType="GoodSku">
         select skuId,goodId,skuName,skuImg,paramsMap,originalPrice,sellPrice,goodStock,createTime,updateTime
         from good_sku
-        where goodId=#{goodId}
+        where skuId=#{skuId}
     </select>
 
 
