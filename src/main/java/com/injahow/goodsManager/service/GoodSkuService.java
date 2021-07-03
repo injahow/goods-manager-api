@@ -11,5 +11,6 @@ public interface GoodSkuService {
     boolean addGoodSku(GoodSku goodSku);
     boolean removeGoodSkuById(int skuId);
     GoodSku find(int skuId);
+    boolean editGoodSku(GoodSku goodSku);
 
 }

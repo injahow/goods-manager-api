@@ -106,7 +106,7 @@ public class GoodSpuController {
         }
         boolean isSuccess = goodSpuService.addGoodSpu(goodSpu);
         if (isSuccess) {
-            return new ResultVO(200, "提交成功", null);
+            return new ResultVO(200, "提交成功", goodSpu);
         } else {
             return new ResultVO(500, "提交失败", null);
         }
@@ -119,7 +119,7 @@ public class GoodSpuController {
         if (goodId>0){
             boolean isSuccess = goodSpuService.editGoodSpu(goodSpu);
             if (isSuccess){
-                return new ResultVO(200,"修改成功",null);
+                return new ResultVO(200,"修改成功",goodSpu);
             }else {
                 return new ResultVO(500,"修改失败",null);
             }

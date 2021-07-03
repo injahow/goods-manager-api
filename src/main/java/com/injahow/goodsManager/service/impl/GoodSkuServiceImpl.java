@@ -40,4 +40,11 @@ public class GoodSkuServiceImpl implements GoodSkuService {
     public GoodSku find(int skuId) {
         return goodSkuDAO.queryGoodSkuById(skuId);
     }
+
+    @Override
+    public boolean editGoodSku(GoodSku goodSku) {
+        goodSku.setUpdateTime(new Date());
+        int res = goodSkuDAO.updateGoodSku(goodSku);
+        return res>0;
+    }
 }

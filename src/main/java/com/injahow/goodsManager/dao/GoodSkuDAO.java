@@ -11,5 +11,6 @@ public interface GoodSkuDAO {
     int insertGoodSku(GoodSku goodSku);
     int deleteGoodSkuById(int id);
     GoodSku queryGoodSkuById(int skuId);
+    int updateGoodSku(GoodSku goodSku);
 
 }
