@@ -10,4 +10,5 @@ public interface GoodSpuDAO {
     GoodSpu queryGoodSpuById(int id);
     Page<GoodSpu> listGoodSpu();
     Page<GoodSpu> listGoodSpuByName(String goodName);
+    Page<GoodSpu> listGoodSpuByTypeId(int typeId);
 }

@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.List;
 
 @Service
 public class GoodSpuServiceImpl implements GoodSpuService {
@@ -34,6 +33,11 @@ public class GoodSpuServiceImpl implements GoodSpuService {
     @Override
     public Page<GoodSpu> searchGoodSpuByName(String name) {
         return goodSpuDAO.listGoodSpuByName(name);
+    }
+
+    @Override
+    public Page<GoodSpu> searchGoodSpuByTypeId(int typeId) {
+        return goodSpuDAO.listGoodSpuByTypeId(typeId);
     }
 
     @Override

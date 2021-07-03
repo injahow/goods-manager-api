@@ -15,7 +15,7 @@
     </delete>
 
     <select id="queryGoodSkuByGoodId" resultType="GoodSku">
-        select skuId,skuName,skuImg,paramsMap,originalPrice,sellPrice,goodStock,createTime,updateTime
+        select skuId,goodId,skuName,skuImg,paramsMap,originalPrice,sellPrice,goodStock,createTime,updateTime
         from good_sku
         where goodId=#{goodId}
     </select>

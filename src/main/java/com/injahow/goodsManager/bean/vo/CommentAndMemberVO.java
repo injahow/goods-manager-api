@@ -1,7 +1,6 @@
 package com.injahow.goodsManager.bean.vo;
 
 import com.injahow.goodsManager.bean.Member;
-import com.injahow.goodsManager.bean.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

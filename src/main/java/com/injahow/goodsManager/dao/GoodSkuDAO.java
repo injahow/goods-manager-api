@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface GoodSkuDAO {
     List<GoodSku> queryGoodSkuByGoodId(int goodId);
-    int insertGoodSku(GoodSku good);
+    int insertGoodSku(GoodSku goodSku);
     int deleteGoodSkuById(int id);
 
 }

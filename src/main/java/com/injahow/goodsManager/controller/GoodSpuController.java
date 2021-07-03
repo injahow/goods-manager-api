@@ -68,9 +68,24 @@ public class GoodSpuController {
             return new ResultVO(500, "搜索名称为空！" , null);
         }
         PageHelper.startPage(pageNo, pageSize);
-        PageInfo<GoodSpu> pageInfo = new PageInfo<>(goodSpuService.searchGoodSpuByName(name));
-
+        PageInfo<GoodSpu> pageInfo;
+        pageInfo = new PageInfo<>(goodSpuService.searchGoodSpuByName(name));
         return new ResultVO(200, "success" , listPageInfo(pageInfo));
+    }
+
+    @GetMapping("/search_type")
+    public ResultVO search(@RequestParam(defaultValue = "0") int name,
+                           @RequestParam(defaultValue = "1") int pageNo,
+                           @RequestParam(defaultValue = "10") int pageSize) {
+        if(name>0) {
+            PageHelper.startPage(pageNo, pageSize);
+            PageInfo<GoodSpu> pageInfo;
+            pageInfo = new PageInfo<>(goodSpuService.searchGoodSpuByTypeId(name));
+            return new ResultVO(200, "success" , listPageInfo(pageInfo));
+        }else{
+            return new ResultVO(500, "搜索类型为空！" , null);
+        }
+
     }
 
     @GetMapping("/find")
@@ -114,7 +129,8 @@ public class GoodSpuController {
     }
 
     @PostMapping("/del")
-    public ResultVO del(@RequestParam("goodId") int goodId) {
+    public ResultVO del(@RequestBody GoodSpu goodSpu) {
+        int goodId = goodSpu.getGoodId();
         boolean isSuccess = goodSpuService.removeGoodSpuById(goodId);
         if (isSuccess) {
             return new ResultVO(200, "删除成功", null);

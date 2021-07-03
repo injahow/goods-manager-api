@@ -66,12 +66,10 @@ public class CommentController {
         } else {
             return new ResultVO(500, "提交请求失败", null);
         }
-
     }
 
     @PostMapping("/del_all")
     public ResultVO delAll(@RequestBody List<Integer> commentIds) {
-
         if (commentIds.size()>0) {
             boolean isSuccess = commentService.deleteCommentsById(commentIds);
             if (isSuccess) {

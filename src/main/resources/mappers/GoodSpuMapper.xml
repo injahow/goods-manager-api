@@ -25,6 +25,12 @@
         where goodName like CONCAT('%',#{goodName},'%')
     </select>
 
+    <select id="listGoodSpuByTypeId" resultType="GoodSpu">
+        select goodId,goodName,typeId,soldNum,status,context,createTime,updateTime
+        from good_spu
+        where typeId=#{typeId}
+    </select>
+
     <select id="queryGoodSpuById" resultType="GoodSpu">
         select goodId,goodName,typeId,soldNum,status,context,createTime,updateTime
         from good_spu

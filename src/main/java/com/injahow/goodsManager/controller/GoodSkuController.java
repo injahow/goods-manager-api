@@ -19,27 +19,18 @@ public class GoodSkuController {
     private GoodSkuService goodSkuService;
 
     @GetMapping("/list_same")
-    public ResultVO listSame(@RequestBody GoodSku goodSku){
-        List<GoodSku> goodSkus = goodSkuService.listGoodSku(goodSku.getSkuId());
-        return new ResultVO(200, "success" , null);
+    public ResultVO listSame(@RequestParam("goodId") int goodId){
+
+        List<GoodSku> goodSkuList = goodSkuService.listGoodSku(goodId);
+        return new ResultVO(200, "success" , goodSkuList);
     }
 
-    /*@GetMapping("/find")
-    public ResultVO find(@RequestParam("goodId") int goodId) {
-        GoodSku goodSku = goodSkuService.find(goodId);
-        GoodType goodType = goodTypeService.getGoodTypeById(goodSku.getTypeId());
-        GoodSkuAndTypeVO goodSkuAndTypeVO = new GoodSkuAndTypeVO(
-                goodSku.getGoodId(),
-                goodSku.getGoodName(),
-                goodType,
-                goodSku.getSoldNum(),
-                goodSku.getStatus(),
-                goodSku.getContext(),
-                goodSku.getCreateTime(),
-                goodSku.getUpdateTime()
-        );
-        return new ResultVO(200, "success" , goodSkuAndTypeVO);
-    }*/
+    @GetMapping("/find")
+    public ResultVO find(@RequestParam("skuId") int skuId) {
+        // GoodSku goodSku = goodSkuService.find(goodId);
+
+        return new ResultVO(200, "success" , "goodSkuAndTypeVO");
+    }
 
     @PostMapping("/add")
     public ResultVO add(@RequestBody GoodSku goodSku) {
@@ -61,11 +52,10 @@ public class GoodSkuController {
 
     @PostMapping("/edit")
     public ResultVO edit(@RequestBody GoodSku goodSku){
-        /*int goodId = goodSku.getGoodId();
+        int skuId = goodSku.getSkuId();
         System.out.println(goodSku);
-        if (goodId>0){
-            boolean isSuccess = goodSkuService.editGoodSku(goodSku);
-            System.out.println(goodSku);
+        if (skuId>0){
+            boolean isSuccess = false;//goodSkuService.editGoodSku(goodSku);
             if (isSuccess){
                 return new ResultVO(200,"修改成功",null);
             }else {
@@ -73,8 +63,8 @@ public class GoodSkuController {
             }
         }else {
             return new ResultVO(500,"提交表单失败",null);
-        }*/
-        return new ResultVO(500,"提交表单失败",null);
+        }
+        // return new ResultVO(500,"提交表单失败",null);
     }
 
     @PostMapping("/del")
