@@ -1,2 +1,2 @@
 # goods-manager-api
-goods管理系统后台
+Goods Manager 系统后台
