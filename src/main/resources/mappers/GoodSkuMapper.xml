@@ -20,5 +20,18 @@
         where skuId=#{skuId}
     </select>
 
+    <update id="updateGoodSku">
+        update good_sku
+        set
+            skuName=#{skuName},
+            skuImg=#{skuImg},
+            paramsMap=#{paramsMap},
+            originalPrice=#{originalPrice},
+            sellPrice=#{sellPrice},
+            goodStock=#{goodStock},
+            updateTime=#{updateTime}
+        where
+            skuId=#{skuId}
+    </update>
 
 </mapper>

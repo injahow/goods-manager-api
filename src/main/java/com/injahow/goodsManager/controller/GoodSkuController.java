@@ -43,7 +43,7 @@ public class GoodSkuController {
         }
         boolean isSuccess = goodSkuService.addGoodSku(goodSku);
         if (isSuccess) {
-            return new ResultVO(200, "提交成功", null);
+            return new ResultVO(200, "提交成功", goodSku);
         } else {
             return new ResultVO(500, "提交失败", null);
         }
@@ -54,9 +54,9 @@ public class GoodSkuController {
         int skuId = goodSku.getSkuId();
         System.out.println(goodSku);
         if (skuId>0){
-            boolean isSuccess = false;//goodSkuService.editGoodSku(goodSku);
+            boolean isSuccess = goodSkuService.editGoodSku(goodSku);
             if (isSuccess){
-                return new ResultVO(200,"修改成功",null);
+                return new ResultVO(200,"修改成功",goodSku);
             }else {
                 return new ResultVO(500,"修改失败",null);
             }
