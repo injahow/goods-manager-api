@@ -1,7 +1,6 @@
 package com.injahow.goodsManager.service.impl;
 
 import com.github.pagehelper.Page;
-import com.injahow.goodsManager.bean.GoodSku;
 import com.injahow.goodsManager.bean.GoodSpu;
 import com.injahow.goodsManager.dao.GoodSpuDAO;
 import com.injahow.goodsManager.service.GoodSpuService;

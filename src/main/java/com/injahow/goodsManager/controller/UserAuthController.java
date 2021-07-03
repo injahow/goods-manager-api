@@ -5,7 +5,6 @@ import com.injahow.goodsManager.bean.User;
 import com.injahow.goodsManager.bean.UserAuth;
 import com.injahow.goodsManager.service.UserAuthService;
 import com.injahow.goodsManager.utils.AuthUtil;
-import com.injahow.goodsManager.utils.MD5Util;
 import io.jsonwebtoken.*;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Controller;

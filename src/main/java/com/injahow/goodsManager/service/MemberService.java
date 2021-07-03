@@ -1,7 +1,5 @@
 package com.injahow.goodsManager.service;
 
-import com.injahow.goodsManager.bean.Comment;
-import com.injahow.goodsManager.bean.GoodType;
 import com.injahow.goodsManager.bean.Member;
 
 

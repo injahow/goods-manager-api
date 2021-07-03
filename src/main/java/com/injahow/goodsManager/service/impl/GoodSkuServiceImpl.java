@@ -1,11 +1,9 @@
 package com.injahow.goodsManager.service.impl;
 
 import com.injahow.goodsManager.bean.GoodSku;
-
 import com.injahow.goodsManager.dao.GoodSkuDAO;
 import com.injahow.goodsManager.service.GoodSkuService;
 import org.springframework.stereotype.Service;
-
 
 import javax.annotation.Resource;
 import java.util.Date;

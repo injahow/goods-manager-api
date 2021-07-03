@@ -1,7 +1,5 @@
 package com.injahow.goodsManager.service;
 
-
-import com.injahow.goodsManager.bean.GoodSpu;
 import com.injahow.goodsManager.bean.GoodType;
 
 import java.util.List;

@@ -3,7 +3,6 @@ package com.injahow.goodsManager.service.impl;
 import com.github.pagehelper.Page;
 import com.injahow.goodsManager.bean.Comment;
 import com.injahow.goodsManager.dao.CommentDAO;
-import com.injahow.goodsManager.dao.MemberDAO;
 import com.injahow.goodsManager.service.CommentService;
 import org.springframework.stereotype.Service;
 
