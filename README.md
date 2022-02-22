@@ -8,7 +8,7 @@
 - 类别管理业务流程分析（添加类别、查看类别、删除类别、修改类别）
 - 商品管理业务流程分析（添加商品、查看商品、删除商品、修改商品、搜索商品）
 
-![](imgs\process_analysis.jpg)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/process_analysis.jpg)
 
 ## 二、项目设计
 
@@ -16,11 +16,11 @@
 
 - 登录界面
 
-![](imgs\login_interface.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/login_interface.png)
 
 - 管理系统主界面
 
-![](imgs\main.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/main.png)
 
 ### 2.2 数据库设计
 
@@ -48,11 +48,11 @@
 
 #### 2.2.4 绘制 E-R 图
 
-![](imgs\ER1.jpg)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/ER1.jpg)
 
-![](imgs\ER2.jpg)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/ER2.jpg)
 
-![](imgs\ER.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/ER.png)
 
 #### 2.2.5 建库建表
 
@@ -190,27 +190,27 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 #### 2.3.1 管理员登录实现流程
 
-![](imgs\login.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/login.png)
 
 #### 2.3.2 添加商品实现流程
 
-![](imgs\add.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/add.png)
 
 #### 2.3.3 查看商品详情实现流程
 
-![](imgs\list.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-apiimgs/list.png)
 
 #### 2.3.4 删除商品实现流程
 
-![](imgs\delete.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/delete.png)
 
 #### 2.3.5 修改商品实现流程
 
-![](imgs\update.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/update.png)
 
 #### 2.3.6 搜索商品实现流程
 
-![](imgs\search.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/search.png)
 
 #### 备注
 
@@ -225,35 +225,35 @@ SET FOREIGN_KEY_CHECKS = 1;
 
 - 添加商品功能
 
-![](imgs\goods_add.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/goods_add.png)
 
 - 编辑（修改）商品功能
 
-![](imgs\good_edit.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/good_edit.png)
 
 - 查看商品详情功能
 
-![](imgs\goods_details.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/goods_details.png)
 
 - 搜索商品功能
 
-![](imgs\goods_search.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/goods_search.png)
 
 - 添加类别功能
 
-![](imgs\goodsType_add.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/goodsType_add.png)
 
 - 修改类别功能
 
-![](imgs\goodsType_update.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/goodsType_update.png)
 
 - 类别介绍查看功能
 
-![](imgs\goodsType_introduction.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/goodsType_introduction.png)
 
 - 评论管理功能
 
-![](imgs\comments_management.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/comments_management.png)
 
 ## 五、生产环境部署（Linux）
 
@@ -263,6 +263,6 @@ SET FOREIGN_KEY_CHECKS = 1;
 mvn clean package
 ```
 
-![](imgs\bushu.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/bushu.png)
 
-![](imgs\bushu1.png)
+![](https://cdn.jsdelivr.net/gh/injahow/goods-manager-api/imgs/bushu1.png)
